@@ -33,12 +33,18 @@ project(numeros-matriz C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
+file(GLOB LIBSOURCES "include/*.c")
+file(GLOB SRCSOURCES "src/*.c")
+
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(numeros-matriz numeros-matriz.c )
+add_executable(numeros-matriz ${LIBSOURCES} ${SRCSOURCES})
 
 pico_set_program_name(numeros-matriz "numeros-matriz")
 pico_set_program_version(numeros-matriz "0.1")
+
+# Generate PIO header
+pico_generate_pio_header(numeros-matriz ${CMAKE_CURRENT_LIST_DIR}/include/ws2818b.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(numeros-matriz 1)
@@ -55,8 +61,10 @@ target_include_directories(numeros-matriz PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(numeros-matriz 
-        
-        )
+        hardware_pio
+        hardware_clocks
+        hardware_pwm
+)
 
 pico_add_extra_outputs(numeros-matriz)
 
