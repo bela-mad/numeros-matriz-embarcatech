@@ -23,48 +23,45 @@ if (EXISTS ${picoVscode})
     include(${picoVscode})
 endif()
 # ====================================================================================
-set(PICO_BOARD pico2_w CACHE STRING "Board type")
+set(PICO_BOARD pico_w CACHE STRING "Board type")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(numeros-matriz C CXX ASM)
+project(contador-embarcatech C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 file(GLOB LIBSOURCES "include/*.c")
-file(GLOB SRCSOURCES "src/*.c")
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(numeros-matriz ${LIBSOURCES} ${SRCSOURCES})
+add_executable(contador-embarcatech contador-embarcatech.c ${LIBSOURCES})
 
-pico_set_program_name(numeros-matriz "numeros-matriz")
-pico_set_program_version(numeros-matriz "0.1")
+pico_set_program_name(contador-embarcatech "contador-embarcatech")
+pico_set_program_version(contador-embarcatech "0.1")
 
-# Generate PIO header
-pico_generate_pio_header(numeros-matriz ${CMAKE_CURRENT_LIST_DIR}/include/ws2818b.pio)
+pico_generate_pio_header(contador-embarcatech ${CMAKE_CURRENT_LIST_DIR}/include/ws2818b.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(numeros-matriz 1)
-pico_enable_stdio_usb(numeros-matriz 1)
+pico_enable_stdio_uart(contador-embarcatech 1)
+pico_enable_stdio_usb(contador-embarcatech 1)
 
 # Add the standard library to the build
-target_link_libraries(numeros-matriz
-        pico_stdlib)
+target_link_libraries(contador-embarcatech
+        pico_stdlib
+        hardware_pio)
 
 # Add the standard include files to the build
-target_include_directories(numeros-matriz PRIVATE
+target_include_directories(contador-embarcatech PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(numeros-matriz 
-        hardware_pio
-        hardware_clocks
-        hardware_pwm
-)
+target_link_libraries(contador-embarcatech 
+        
+        )
 
-pico_add_extra_outputs(numeros-matriz)
+pico_add_extra_outputs(contador-embarcatech)
 
