@@ -1,4 +1,4 @@
 [wokwi]
 version = 1
-firmware = '../build/numeros-matriz.uf2'
-elf = '../build/numeros-matriz.elf'
+firmware = '../build/contador-embarcatech.uf2'
+elf = '../build/contador-embarcatech.elf'
