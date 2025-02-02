@@ -16,17 +16,15 @@
 
  &emsp;&emsp;&emsp;&emsp; O programa deve possuir as seguintes funcionalidades:
 
-<p align="justify">  1. O LED vermelho do LED RGB deve piscar continuamente 5 vezes por segundo;
+<p align="justify">  1. O LED vermelho do LED RGB deve piscar continuamente 5 vezes por segundo; </p>
 <p align="justify">  2. O botão A deve incrementar o número exibido na matriz de LEDs cada vez que for pressionado; </p>
 <p align="justify">  3. O botão B deve decrementar o número exibido na matriz de LEDs cada vez que for pressionado; </p>
 <p align="justify">  4. Os LEDs WS2812 devem ser usados para criar efeitos visuais representando números de 0 a 9. A formatação fixa é que cada número deve ser exibido na matriz em um formato fixo, como
 caracteres em estilo digital (ex.: segmentos iluminados que formem o número) e, alternativamente, é permitido utilizar um estilo criativo, desde que o número seja claramente identificável. </p>
 
-<h3> Objetivos e Requisitos </h3>
-
 <h3> Estruturação dos Arquivos </h3>
 
-<p align="justify"> &emsp;&emsp;&emsp;&emsp; O projeto é composto pelos arquivos comuns a um projeto Pico W, além de uma pasta chamada 'wokwi', com os arquivos diagram.json e wokwi.toml (para a simulação no Wokwi), uma pasta chamada 'include', que possui 3 arquivos na extensão .c, que são: buzzer.c (que organiza as funções relacionadas ao buzzer), keypad.c (que organiza as funções relacionadas ao teclado matricial) e ledmatrix.c (que organiza as funções relacionadas à matriz de LEDs), 3 arquivos na extensão .h, que são: buzzer.h, keypad.h e ledmatrix.h (em que ambos possuem o cabeçalho das funções) e um arquivo ws2818b.pio, uma pasta chamada 'src', que possui animation.c (que organiza as funções de animação), animation.h (com os cabeçalhos das funções) e main.c (que gerencia todo o projeto), e o arquivo READ.ME (descrição do projeto).
+<p align="justify"> &emsp;&emsp;&emsp;&emsp; O projeto é composto pelos arquivos comuns a um projeto Pico W, além de uma pasta chamada 'wokwi', com os arquivos diagram.json e wokwi.toml (para a simulação no Wokwi), uma pasta chamada 'include', que possui 4 arquivos na extensão .c, que são: animation.c (que organiza as funções relacionadas à animação), button.c (que organiza as funções relacionadas aos botões), led-rgb.c (que organiza as funções relacionadas ao LED RGB) e matriz_led.c (que organiza as funções relacionadas à matriz de LEDs), 4 arquivos na extensão .h, que são: animaton.h, button.h, led-rgb.h e matriz_led.h (em que ambos possuem o cabeçalho das funções) e um arquivo ws2818b.pio, e os arquivos contador-embarcatech.c (que gerencia todo o projeto) e READ.ME (descrição do projeto).
 
 <h3></h3>
 <h2 align="center"> Vídeo :video_camera: </h2>
@@ -40,8 +38,7 @@ caracteres em estilo digital (ex.: segmentos iluminados que formem o número) e,
 
 - Clonar o repositório em uma pasta separada para recebê-lo;
 - Abrir o projeto no VS Code, importando-o pela extensão Raspberry Pi Pico;
-- Abrir o arquivo diagram.json para usar o simulador Wokwi;
-- Executar a simulação.
-- Caso queira usar na placa BitDogLab, comentar a definição do KEYPAD.
+- Conectar a placa BitDogLab em modo BOOTSEL;
+- Compilar e executar o projeto.
 
 </samp>
