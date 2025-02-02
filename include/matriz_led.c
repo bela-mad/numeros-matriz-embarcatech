@@ -1,12 +1,6 @@
-#include <stdio.h>
 #include "matriz_led.h"
-#include <hardware/pio.h>
-#include "hardware/clocks.h"
 
-// Biblioteca gerada pelo arquivo .pio durante compilação.
-#include "ws2818b.pio.h"
-
-PIO pio;
+PIO pio = pio0;
 uint sm;
 
 // FUNÇÕES
@@ -14,6 +8,14 @@ uint sm;
 // função que inicializa a matriz de LEDs
 uint matrix_init(uint pin_out)
 {
+  bool ok;
+  // Configura o clock para 133 MHz
+  ok = set_sys_clock_khz(133000, false);
+  stdio_init_all();
+
+  printf("Iniciando a transmissão PIO\n");
+  if (ok)
+    printf("Clock configurado para %ld Hz\n", clock_get_hz(clk_sys));
 
   uint offset = pio_add_program(pio0, &ws2818b_program);
   pio = pio0;
@@ -39,18 +41,19 @@ int matrix_get_index(int aux)
   // Se a linha for ímpar (1, 3), percorremos da direita para a esquerda.
   if (y % 2 == 0)
   {
-    return y * 5 + (4 - x); // Linha par (direita para esquerda).
+    return y * 5 + x; // Linha ímpar (esquerda para direita).
   }
   else
   {
-    return y * 5 + x; // Linha ímpar (esquerda para direita).
+    return y * 5 + (4 - x); // Linha par (direita para esquerda).
   }
 }
 
-void matrix_draw_number(const uint32_t matriz[10][25], uint8_t numero) {
+void matrix_draw_number(const uint32_t matriz[10][25], uint8_t numero)
+{
   for (uint8_t aux = 0; aux < NUM_PIXELS; aux++)
   {
     uint8_t led = matrix_get_index(aux);
-    pio_sm_put_blocking(pio0, sm, matriz[numero][led]);
+    pio_sm_put_blocking(pio0, sm, matriz[numero][24-led]);
   }
 }

@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include "hardware/timer.h"
-#include "led_rgb.h"
+#include "led-rgb.h"
 
 // Funções
 

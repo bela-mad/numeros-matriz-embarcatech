@@ -1,9 +1,14 @@
 #ifndef MATRIZ_LED_H
 #define MATRIZ_LED_H
 
+#include <stdio.h>
 #include <stdint.h>
-#include <hardware/pio.h>
+#include "pico/stdlib.h"
+#include "hardware/pio.h"
 #include "hardware/clocks.h"
+
+// Biblioteca gerada pelo arquivo .pio durante compilação.
+#include "../build/ws2818b.pio.h"
 
 // Defines
 #define LED_MATRIZ_PIN 7

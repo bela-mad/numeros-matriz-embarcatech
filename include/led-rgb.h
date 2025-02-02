@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include "pico/stdlib.h"
-#include "hardware/timer.h"
 
 // Defines
 #define RED_LED_PIN 13

@@ -1,5 +1,3 @@
-#include "pico/stdio.h"
-#include "pico/stdlib.h"
 #include "button.h"
 
 // Funções

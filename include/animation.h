@@ -8,4 +8,6 @@
 
 extern const uint32_t numeros[10][25];
 
+extern const uint32_t numeros_low[10][25];
+
 #endif
