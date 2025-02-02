@@ -8,7 +8,7 @@
 # define BUTTON_A_PIN 5
 # define BUTTON_B_PIN 6
 
-// Funções
+// Cabeçalhos das funções
 void button_init(uint gpio);
 
 #endif

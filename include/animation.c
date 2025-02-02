@@ -1,7 +1,6 @@
 #include "animation.h"
 
-#define NUMEROS_FRAME_COUNT 10
-
+// Matriz de animação dos números
 const uint32_t numeros_low[10][25] = {
 {
 0x00000000, 0x3160300, 0x3160300, 0x3160300, 0x00000000, 

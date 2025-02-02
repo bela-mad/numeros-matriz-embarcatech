@@ -15,7 +15,7 @@
 #define NUM_PIXELS 25
 #define COLOR_HEX(r, g, b) (g << 24) | (r << 16) | (b << 8)
 
-// Funções
+// Cabeçalhos das funções
 uint matrix_init(uint pin_out);
 int matrix_get_index(int aux);
 void matrix_draw_number(const uint32_t matriz[10][25], uint8_t numero);
